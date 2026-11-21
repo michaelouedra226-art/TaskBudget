@@ -1,0 +1,11 @@
+# Android
+*.apk
+build/
+.gradle/
+local.properties
+
+# Harness
+.harness/
+
+# OS
+.DS_Store
