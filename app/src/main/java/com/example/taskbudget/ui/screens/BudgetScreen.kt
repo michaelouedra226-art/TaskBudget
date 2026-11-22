@@ -4,7 +4,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBalance
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -13,15 +14,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.taskbudget.BudgetViewModel
 import com.example.taskbudget.ui.components.*
-import com.example.taskbudget.ui.theme.RoundedCornerShape
 
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun BudgetScreen(onBack: () -> Unit) {
     val vm: BudgetViewModel = viewModel()
@@ -35,7 +35,7 @@ fun BudgetScreen(onBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = { Text("Mon budget", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold) },
-                navigationIcon = { Text("←", style = MaterialTheme.typography.headlineLarge) },
+                navigationIcon = { TextButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Retour") } },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
             )
         },
@@ -73,7 +73,7 @@ fun BudgetScreen(onBack: () -> Unit) {
 
             if (txs.isEmpty()) {
                 EmptyState(
-                    icon = { androidx.compose.material3.Icon(Icons.Default.AccountBalance, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
+                    icon = { Icon(Icons.Default.BarChart, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
                     title = "Aucun mouvement",
                     subtitle = "Enregistrez un revenu ou une dépense.")
             } else {

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AddTask
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -17,10 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.taskbudget.TaskViewModel
-import com.example.taskbudget.data.Task
 import com.example.taskbudget.ui.components.*
-import com.example.taskbudget.ui.theme.RoundedCornerShape
 
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun TasksScreen(onBack: () -> Unit) {
     val vm: TaskViewModel = viewModel()
@@ -32,7 +32,7 @@ fun TasksScreen(onBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = { Text("Mes tâches", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold) },
-                navigationIcon = { Text("←", style = MaterialTheme.typography.headlineLarge) },
+                navigationIcon = { TextButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Retour") } },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
             )
         },
@@ -61,7 +61,7 @@ fun TasksScreen(onBack: () -> Unit) {
 
             if (tasks.isEmpty()) {
                 EmptyState(
-                    icon = { androidx.compose.material3.Icon(Icons.Default.AddTask, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
+                    icon = { Icon(Icons.Default.AddTask, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
                     title = "Rien à faire (pour l'instant)",
                     subtitle = "Ajoutez votre première tâche ci-dessus.")
             } else {
