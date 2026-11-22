@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.AddTask
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -57,12 +57,12 @@ fun TasksScreen(onBack: () -> Unit) {
                 Spacer(Modifier.width(8.dp))
                 FilledIconButton(onClick = {
                     vm.add(title.trim(), due.trim()); title = ""; due = ""
-                }) { Icon(Icons.Default.AddTask, "Ajouter") }
+                }) { Icon(Icons.Default.Add, "Ajouter") }
             }
 
             if (tasks.isEmpty()) {
                 EmptyState(
-                    icon = { Icon(Icons.Default.AddTask, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
+                    icon = { Icon(Icons.Default.Add, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
                     title = "Rien à faire (pour l'instant)",
                     subtitle = "Ajoutez votre première tâche ci-dessus.")
             } else {

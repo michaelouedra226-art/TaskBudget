@@ -2,7 +2,7 @@ package com.example.taskbudget.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Checklist
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.taskbudget.BudgetViewModel
@@ -24,7 +25,7 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
     val tvm: TaskViewModel = viewModel()
     val balance by bvm.balance.collectAsState()
     val tasks by tvm.tasks.collectAsState()
-    val txCount by bvm.transactions.collectAsState()
+    val txs by bvm.transactions.collectAsState()
     val doneCount = tasks.count { it.done }
 
     Column(Modifier
@@ -43,9 +44,9 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
 
         SectionHeader("Aperçu")
         Row(Modifier.fillMaxWidth()) {
-            StatCard("Tâches faites", "$doneCount/${tasks.size}", Icons.Default.Checklist)
+            StatCard("Tâches faites", "$doneCount/${tasks.size}", Icons.Default.List, Modifier.weight(1f))
             Spacer(Modifier.width(12.dp))
-            StatCard("Mouvements", "${txCount.size}", Icons.Default.ShoppingCart)
+            StatCard("Mouvements", "${txs.size}", Icons.Default.ShoppingCart, Modifier.weight(1f))
         }
         Spacer(Modifier.height(24.dp))
 
@@ -53,7 +54,7 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
         Row(Modifier.fillMaxWidth()) {
             Button(onClick = onTasks, shape = RoundedCornerShape(18.dp),
                 modifier = Modifier.weight(1f).height(56.dp)) {
-                Icon(Icons.Default.Checklist, null)
+                Icon(Icons.Default.List, null)
                 Spacer(Modifier.width(8.dp)); Text("Tâches")
             }
             Spacer(Modifier.width(12.dp))
@@ -68,8 +69,8 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
 }
 
 @Composable
-private fun StatCard(label: String, value: String, icon: androidx.compose.ui.graphics.vector.ImageVector) {
-    Card(Modifier.weight(1f), shape = RoundedCornerShape(18.dp)) {
+private fun StatCard(label: String, value: String, icon: ImageVector, modifier: Modifier) {
+    Card(modifier, shape = RoundedCornerShape(18.dp)) {
         Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary,
