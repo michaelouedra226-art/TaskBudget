@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.taskbudget.TaskViewModel
 import com.example.taskbudget.ui.components.*
+import com.example.taskbudget.ui.theme.RoundedCornerShape
 
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable

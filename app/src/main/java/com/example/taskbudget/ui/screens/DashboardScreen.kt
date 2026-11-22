@@ -2,8 +2,8 @@ package com.example.taskbudget.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Checklist
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -45,7 +45,7 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
         Row(Modifier.fillMaxWidth()) {
             StatCard("Tâches faites", "$doneCount/${tasks.size}", Icons.Default.Checklist)
             Spacer(Modifier.width(12.dp))
-            StatCard("Mouvements", "${txCount.size}", Icons.Default.BarChart)
+            StatCard("Mouvements", "${txCount.size}", Icons.Default.ShoppingCart)
         }
         Spacer(Modifier.height(24.dp))
 
@@ -59,7 +59,7 @@ fun DashboardScreen(onTasks: () -> Unit, onBudget: () -> Unit) {
             Spacer(Modifier.width(12.dp))
             Button(onClick = onBudget, shape = RoundedCornerShape(18.dp),
                 modifier = Modifier.weight(1f).height(56.dp)) {
-                Icon(Icons.Default.BarChart, null)
+                Icon(Icons.Default.ShoppingCart, null)
                 Spacer(Modifier.width(8.dp)); Text("Budget")
             }
         }

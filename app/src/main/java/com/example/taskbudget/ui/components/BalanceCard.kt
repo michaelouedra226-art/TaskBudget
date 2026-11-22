@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,7 +30,7 @@ fun BalanceCard(amount: Double, modifier: Modifier = Modifier) {
                 fontSize = 36.sp, fontWeight = FontWeight.Bold, letterSpacing = (-0.5).sp)
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.TrendingUp, contentDescription = null, tint = White.copy(alpha = 0.8f), modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.ShoppingCart, contentDescription = null, tint = White.copy(alpha = 0.8f), modifier = Modifier.size(16.dp))
                 Spacer(Modifier.width(4.dp))
                 Text("Votre budget, en un coup d'œil", color = White.copy(alpha = 0.8f),
                     style = MaterialTheme.typography.labelSmall)

@@ -5,8 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.taskbudget.BudgetViewModel
 import com.example.taskbudget.ui.components.*
+import com.example.taskbudget.ui.theme.RoundedCornerShape
 
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
@@ -73,7 +74,7 @@ fun BudgetScreen(onBack: () -> Unit) {
 
             if (txs.isEmpty()) {
                 EmptyState(
-                    icon = { Icon(Icons.Default.BarChart, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
+                    icon = { Icon(Icons.Default.ShoppingCart, null, modifier = Modifier.size(32.dp), tint = MaterialTheme.colorScheme.primary) },
                     title = "Aucun mouvement",
                     subtitle = "Enregistrez un revenu ou une dépense.")
             } else {
